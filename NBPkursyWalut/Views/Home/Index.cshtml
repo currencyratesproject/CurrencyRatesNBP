@@ -1,0 +1,60 @@
+﻿@model List<NBPkursyWalut.Models.Position>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table {
+        text-align: center;
+        width: 100%;
+        border:1px solid black;
+        
+       
+    }
+    th {
+        background-color: #d7d7d7;
+        text-align:center;
+       
+    }
+    
+    
+</style>
+
+
+<h1>Currency rates from January 2007 to December 2014</h1>
+<br/>
+<table>
+    @foreach (var item in Model)
+    {
+        
+        <tr>
+            <th><h2>@item.CurrencyName</h2></th>
+        </tr>
+        <tr>
+            <td>
+                <h3>@Html.ActionLink(item.CurrencyCode, "Currency", "Home", new RouteValueDictionary {{"id",@item.CurrencyCode }},null)</h3>
+            </td>
+        </tr>
+         <tr>
+            <td><span><strong>Currency conversion:</strong>@item.CurrencyConversion</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Max:</strong> @ViewData[item.CurrencyName + "Max"]</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Min:</strong> @ViewData[item.CurrencyName + "Min"]</span></td>
+        </tr>
+        <tr>
+            <td><span><strong>Avg:</strong> @ViewData[item.CurrencyName + "Avg"]</span></td>
+        </tr>
+
+
+
+
+    }
+</table>
+<span><i>*There are only currency rates of last day every month</i></span>
+
+
+
+
+

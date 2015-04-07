@@ -1,0 +1,76 @@
+﻿<div id="ratesTable">
+    @using (Ajax.BeginForm("Currency", "Home", new AjaxOptions() { UpdateTargetId = "ratesTable", HttpMethod = "Post", InsertionMode = InsertionMode.Replace, OnComplete="loadChart"}))
+    {
+
+     
+         <div>
+            @Html.Label("Change the date range")
+            <br />
+            <span>From: </span> @Html.DropDownList("From", new SelectList(ViewBag.DatesAsc), new { id = "min" })<span> To: </span> @Html.DropDownList("To", new SelectList(ViewBag.DatesDsc), new { id = "max" }) <input type="submit" value="Submit" />
+            @Html.ValidationMessage("To")
+        </div>
+        <br/>
+
+    }
+
+    @if (ViewBag.Code != null)
+    {
+         <style>
+            table {
+                text-align: center;
+                width: 100%;
+                border: 1px solid black;
+            }
+
+            td {
+                background-color: #d7d7d7;
+                text-align: center;
+                border: 1px solid black;
+                font-size: 17px;
+            }
+            th {
+                text-align: center;
+                border: 1px solid black;
+                font-size: 19px;
+            }
+        </style>
+
+        <table>
+            
+            @if (ViewBag.Code != null)
+            {
+                <tr>
+                    <th>Date</th>
+                    <th>Currency rate</th>
+                </tr>
+                
+                foreach (var item in Model)
+                {       
+                    
+
+                    <tr>
+                        <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Average.ToString("F4")</td>
+                    </tr>
+
+                }
+            }
+
+        </table>
+
+
+
+    }
+    else
+    {
+        <h2>There is no information about this currency</h2>
+    }
+</div>
+
+
+
+
+
+        
+
+       

@@ -1,0 +1,56 @@
+﻿@model List<NBPkursyWalut.Models.Position>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="~/Scripts/chart.js"></script>
+
+
+@if (@ViewBag.Code != null)
+{
+    <h2>Detalis of @Model.FirstOrDefault().CurrencyName</h2>
+
+}
+
+<div id="chart">
+</div>
+<br />
+
+@{Html.RenderPartial("_Table");}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
