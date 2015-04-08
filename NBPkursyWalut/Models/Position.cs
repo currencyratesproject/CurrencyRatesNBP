@@ -50,8 +50,8 @@ namespace NBPkursyWalut.Models
             }
             set 
             {
-                Average = Convert.ToDouble(value)/10000;
-               //It's because I had problems with conversion to Double on server side. 
+                Average = Convert.ToDouble(value);
+               
             }
          }
 

@@ -8,13 +8,14 @@
         width: 100%;
         border:1px solid black;
         
-       
     }
     th {
         background-color: #d7d7d7;
-        text-align:center;
+        text-align: center;
        
     }
+   
+   
     
     
 </style>
@@ -22,19 +23,23 @@
 
 <h1>Currency rates from January 2007 to December 2014</h1>
 <br/>
-<table>
+<table class="table-striped table-bordered table-hover">
     @foreach (var item in Model)
-    {
-        
+{
+    <thead>
+
         <tr>
             <th><h2>@item.CurrencyName</h2></th>
         </tr>
+    </thead>
+        <tbody>
         <tr>
             <td>
-                <h3>@Html.ActionLink(item.CurrencyCode, "Currency", "Home", new RouteValueDictionary {{"id",@item.CurrencyCode }},null)</h3>
+                <h3>@Html.ActionLink(item.CurrencyCode, "Currency", "Home", new RouteValueDictionary { { "id", @item.CurrencyCode } }, null)</h3>
             </td>
         </tr>
-         <tr>
+  
+        <tr>
             <td><span><strong>Currency conversion:</strong>@item.CurrencyConversion</span></td>
         </tr>
         <tr>
@@ -46,6 +51,7 @@
         <tr>
             <td><span><strong>Avg:</strong> @ViewData[item.CurrencyName + "Avg"]</span></td>
         </tr>
+        </tbody>
 
 
 
